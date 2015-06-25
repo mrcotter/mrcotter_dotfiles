@@ -1,7 +1,7 @@
 # Color the shell.
 export CLICOLOR=1
 
-# Set home path for "ant, maven and jenv"
+# Set home path for "ant, maven and jenv".
 export ANT_HOME="/usr/local/bin/ant"
 export MAVEN_HOME="/usr/local/bin/mvn"
 export JENV_ROOT="/usr/local/opt/jenv"
