@@ -37,7 +37,7 @@ ADDTO_BASHPROFILE ()
 # Change / Setup bash custom prompt (PS1) using powerline
 if grep -q "powerline-shell.py" ~/.bash_profile
 then
-	echo "Existing powerline found in bash_profile, nothing added"
+	echo "Existing powerline text found in bash_profile, nothing added"
 else
 	ADDTO_BASHPROFILE
 fi
