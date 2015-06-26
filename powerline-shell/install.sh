@@ -6,7 +6,7 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until 'install_powerline.sh' has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-SHDIR=$( cd "$( dirname "$0" )" && pwd )
+SHDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # Install fonts for powerline-shell
 echo "Install fonts for powerline-shell"
 sh "$SHDIR/fonts/install.sh"
