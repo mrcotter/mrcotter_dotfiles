@@ -54,7 +54,7 @@ To install, `cd` into your local `dotfiles` repository and then:
 source bootstrap.sh
 ```
 
-To update form my repository, simply run the command above again, the bootstrapper script will pull in the latest version and copy the files to your local folder.
+To update form my repository, simply run the command above again. The bootstrapper script will pull in the latest version and copy the files to your local folder.
 
 ### About `$PATH`
 
@@ -66,9 +66,26 @@ sudo nano ~/.path
 
 ### Solarized Theme for iTerm2 / Terminal
 
-I use a custom bash prompt based on the **[Solarized color palette](http://ethanschoonover.com/solarized)**. It's quite common to install **[iTerm2](https://www.iterm2.com/)** and import _Solarized Dark.itermcolors_ (The files are in the folder `solarized_theme`, _Solarized Dark xterm-256color.terminal_ is for build-in Terminal).
+I use a custom bash prompt based on the **[Solarized color palette](http://ethanschoonover.com/solarized)**. It's quite common to install **[iTerm2](https://www.iterm2.com/)** (a cool Terminal replacement) and import _Solarized Dark.itermcolors_ (The files are in the folder `solarized_theme`, _Solarized Dark xterm-256color.terminal_ is for build-in Terminal).
 
 ### Powerline-shell for Bash
 
+**[Powerline-shell](https://github.com/milkbikis/powerline-shell)** is a python daemon that supplies a consistent, nicely formated status line information that can be used in any terminal shell such as Bash, ZSH and Fish. To install, `cd` into `powerline-shell` directory and then:
+
+```bash
+cd powerline-shell
+./install.sh
+```
+
+The script will do all the jobs, including install the [patched fonts](https://github.com/powerline/fonts). After that, you just need to select one of these fonts in the terminal preferences. Personally, I use the font `Monaco for Powerline`.
+
+## Setting up OS X defaults
+
+You may want to set some sensible OS X defaults too:
+
+```bash
+cd osx_defaults
+./.osx
+```
 
 
