@@ -1,7 +1,7 @@
 # mrcotter_dotfiles
 Configuration dot files for OS X, Homebrew, MPV, etc. For **Developers**.
 
-![Screenshot of my shell prompt](http://i.imgur.com/BAhLxy7.png)
+![Screenshot of Terminal](http://i.imgur.com/UZhJURm.png)
 
 `Dotfiles` might be the most important files on any Unix, Linux or Mac system. They **backup**, **restore**, and **sync** the prefs and settings for your system and apps.
 
@@ -66,7 +66,7 @@ sudo nano ~/.path
 
 ### Solarized Theme for iTerm2 / Terminal
 
-I use a custom bash prompt based on the **[Solarized color palette](http://ethanschoonover.com/solarized)**. It's quite common to install **[iTerm2](https://www.iterm2.com/)** (a cool Terminal replacement) and import _Solarized Dark.itermcolors_ (The files are in the folder `solarized_theme`, _Solarized Dark xterm-256color.terminal_ is for build-in Terminal).
+I use a custom bash prompt based on the **[Solarized color palette](http://ethanschoonover.com/solarized)**. It's quite common to install **[iTerm2](https://www.iterm2.com/)** (a cool Terminal replacement) and import `Solarized Dark.itermcolors` (The files are in the folder `solarized_theme`, `Solarized Dark xterm-256color.terminal` is for build-in Terminal).
 
 ### Powerline-shell for Bash
 
@@ -77,7 +77,7 @@ cd powerline-shell
 ./install.sh
 ```
 
-The script will do all the jobs, including install the [patched fonts](https://github.com/powerline/fonts). After that, you just need to select one of these fonts in the terminal preferences. Personally, I use the font `Monaco for Powerline`.
+The script will do all the jobs, including install the [patched fonts](https://github.com/powerline/fonts). After that, you just need to select one of these fonts in the iTerm2/terminal preferences. Personally, I use the font `Droid Sans Mono for Powerline`.
 
 ## Setting up OS X defaults
 
