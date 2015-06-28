@@ -27,7 +27,7 @@ mkdir -p ~/.config/mpv
 mkdir -p ~/.config/mpv/watch_later
 mkdir -p ~/.config/mpv/tmp
 touch ~/.config/mpv/tmp/icc-cache
-rsync --exclude ".DS_Store" -ravh $MPVDIR ~/.config;
+rsync --exclude ".DS_Store" --exclude "install.sh" -ravh $MPVDIR ~/.config;
 
 # Set default application using mpv for video play
 APPFILE=/Applications/mpv.app
@@ -50,3 +50,4 @@ do
 	lower=$(echo $ext | awk '{print tolower($0)}')
 	duti -s $BUNDLEID $ext all
 	duti -s $BUNDLEID $lower all
+done
