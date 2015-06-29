@@ -48,7 +48,7 @@ In the recipes script, you can simply comment out or delete those fomulae that y
 
 ### - Update Bash Shell
 
-From the recipes, **[Homebrew](http://brew.sh/)** installed Bash 4 to `usr/local/bin/`. Using the following three commands, we’ll initiate a shell as the root user, append our desired shell’s path to a file of whitelisted system shells, and then change the system shell globally.
+From the recipes, **[Homebrew](http://brew.sh/)** installed Bash 4 to `usr/local/bin/`. Using the following three commands, we’ll initiate a shell as the root user, append new shell path to a file of whitelisted system shells, and then change the system shell globally.
 
 ```bash
 sudo -s
@@ -119,7 +119,7 @@ cd mpv
 * `input.conf` - User-defined key bindings for mpv.
 * `lua-settings/osc.conf` - The config file can do limited configuation to the OSC. For instance, changing the layout for the OSC, avaiable values are: box, slimbox, bottombar and topbar.
 * `scripts/autoload.lua` - Automatically load playlist entries before and after the currently playing file, by scanning the directory.
-* `scripts/vo_battery.lua` - Choose the VO based on if the laptop is on battery or not. For instance, when on ac power, the `vo` is set to `opengl-hq:interpolation:icc-profile-auto:icc-cache=~/.config/mpv/tmp/icc-cache:blend-subtitles=yes`; when on battery, the `vo` is set to `opengl:icc-profile-auto`.
+* `scripts/vo_battery.lua` - Choose the `vo` based on if the laptop is on battery or not. For instance, when on ac power, the `vo` is set to `opengl-hq:interpolation:icc-profile-auto:icc-cache=~/.config/mpv/tmp/icc-cache:blend-subtitles=yes`; when on battery, the `vo` is set to `opengl:icc-profile-auto`.
 
 Reminder: `opengl-hq` should be only used when your laptop has *Intel HD 4000 graphics* or above. Otherwise, stick to `opengl` for the `vo`. When equipped with a dedicated video card, you could try adding `interpolation` to the `vo` to reduce stuttering caused by mismatches in the video fps and display refresh rate.
 
