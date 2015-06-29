@@ -20,7 +20,7 @@ Reminder: Java 6 is now **_deprecated and not supported_**, and the current OS X
 
 ## Download dotfiles
 
-### - Using Git
+#### - Using Git
 
 You can clone my repository wherever you want (e.g. `~/Documents/dotfiles`). **_Don't_** execute the bootstrap script right now because several settings in my `dotfiles` required some other dependencies. We are gonna install them via **[Homebrew](http://brew.sh/)** in the next step.
 
@@ -46,7 +46,7 @@ cd homebrew
 
 In the recipes script, you can simply comment out or delete those fomulae that you don't want to install. But beware, there are also configurations in `dotfiles` that relate to some of them. Make sure you understand the files and edit the fomulae properly. For instance, GNU core utilities, Bash, Ant, Maven and Jenv.
 
-### - Update Bash Shell
+#### - Update Bash Shell
 
 From the recipes, **[Homebrew](http://brew.sh/)** installed Bash 4 to `usr/local/bin/`. Using the following three commands, we’ll initiate a shell as the root user, append new shell path to a file of whitelisted system shells, and then change the system shell globally.
 
@@ -66,7 +66,7 @@ source bootstrap.sh
 
 To update form my repository, simply run the command above again. The bootstrapper script will pull in the latest version and copy the files to your local folder.
 
-### - About `$PATH`
+#### - About `$PATH`
 
 If there is a need to extend or modify `$PATH`, locate to `~/.path`. This is the one which is sourced along with the other files. Like this:
 
@@ -74,11 +74,11 @@ If there is a need to extend or modify `$PATH`, locate to `~/.path`. This is the
 sudo nano ~/.path
 ```
 
-### - Solarized Theme for iTerm2 / Terminal
+#### - Solarized Theme for iTerm2 / Terminal
 
 I use a custom bash prompt based on the **[Solarized color palette](http://ethanschoonover.com/solarized)**. It's quite common to install **[iTerm2](https://www.iterm2.com/)** (a cool Terminal replacement) and import `Solarized Dark.itermcolors` (The files are in the folder `solarized_theme`, `Solarized Dark xterm-256color.terminal` is for build-in Terminal).
 
-### - Powerline-shell for Bash
+#### - Powerline-shell for Bash
 
 **[Powerline-shell](https://github.com/milkbikis/powerline-shell)** is a python daemon that supplies a consistent, nicely formated status line information that can be used in any terminal shell such as Bash, ZSH and Fish. To install, `cd` into `powerline-shell` directory and then:
 
@@ -113,7 +113,7 @@ cd mpv
 ./install.sh
 ```
 
-### - configuation files and lua scripts in `~/.config/mpv`:
+#### - configuation files and lua scripts in `~/.config/mpv`:
 
 * `mpv.conf` - The config file is read per-user. Most options from man page can be put into the configuration file by dropping the preceding `--`. See full documentation [here](http://mpv.io/manual/stable/).
 * `input.conf` - User-defined key bindings for mpv.
