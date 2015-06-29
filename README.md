@@ -48,12 +48,40 @@ In the recipes script, you can simply comment out or delete those fomulae that y
 
 #### - Update Bash Shell
 
-From the recipes, **[Homebrew](http://brew.sh/)** installed Bash 4 to `usr/local/bin/`. Using the following three commands, we’ll initiate a shell as the root user, append new shell path to a file of whitelisted system shells, and then change the system shell globally.
+From the recipes, **[Homebrew](http://brew.sh/)** installed Bash 4 to `usr/local/bin/`. Using the following commands, we’ll initiate a shell as the root user, append new shell path to a file of whitelisted system shells, and then change the system shell globally.
 
 ```bash
-sudo -s
-echo /usr/local/bin/bash >> /etc/shells
-chsh -s /usr/local/bin/bash
+sudo echo /usr/local/opt/bash/bin/bash >> /etc/shells
+```
+
+Enter
+
+```bash
+chsh
+```
+
+Change
+
+```bash
+Shell: /bin/bash
+```
+
+To
+
+```bash
+Shell: /usr/local/opt/bash/bin/bash
+```
+
+:wq to save and quit, restart the Terminal and then enter:
+
+```bash
+echo $BASH_VERSION
+```
+
+The output result should be 4.3.33(1)-release or above. Congratulations! You can now use some new commands in the Terminal, for example:
+
+```bash
+echo -e '\e[0;33;1mHello\e[0m World'
 ```
 
 ## Install Dotfiles
