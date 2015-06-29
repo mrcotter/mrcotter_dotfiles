@@ -44,7 +44,7 @@ cd homebrew
 ./brew_recipes.sh
 ```
 
-In the recipes script, you can simply comment out or delete those fomulae that you don't want to install. But beware, there are also configurations in `dotfiles` that relate to some of them. Make sure you understand the files and edit the fomulae properly. For instance, GNU core utilities, bash, ant, maven, jenv.
+In the recipes script, you can simply comment out or delete those fomulae that you don't want to install. But beware, there are also configurations in `dotfiles` that relate to some of them. Make sure you understand the files and edit the fomulae properly. For instance, GNU core utilities, Bash, Ant, Maven and Jenv.
 
 ### - Update Bash Shell
 
@@ -102,9 +102,35 @@ cd osx_defaults
 
 ![MPV Screenshot](http://i.imgur.com/2h7un5l.jpg)
 
-**[MPV](http://mpv.io)** is a fork of mplayer2 and MPlayer. It shares some features with the former projects while introducing many more. I find **[MPV](http://mpv.io)** the best video player on Mac for its high quality video output and better support on different formats of subtitles compare to **[Movist](https://itunes.apple.com/au/app/movist/id461788075?mt=12)**.
+**[MPV](http://mpv.io)** is a fork of mplayer2 and MPlayer. It shares some features with the former projects while introducing many more. I find **[MPV](http://mpv.io)** the best video player so far on Mac for its high quality video output and better support on different formats of subtitles compare to **[Movist](https://itunes.apple.com/au/app/movist/id461788075?mt=12)**.
 
-**[MPV](http://mpv.io)** is essentionally a CLI media player for its current progress. It lacks of full GUI mode to control or adjust settings other than the OSC (On Screen Controller). All other settings must be configured via command lines, or user can put user-specifuc configuration files and lua scripts in `~/.config/mpv`. See full documentation [here](http://mpv.io/manual/stable/).
+**[MPV](http://mpv.io)** is essentially a CLI media player for its current progress. It lacks of full GUI mode to control or adjust settings other than the OSC (On Screen Controller). All other settings must be configured via command lines, or user can put user-specifuc configuration files and lua scripts in `~/.config/mpv`.
 
-The script in `mpv` will install 
+The script in `mpv` will install **[MPV](http://mpv.io)** via **[Homebrew](http://brew.sh/)** as well as setting it up using my configuration files and two other lua scripts. In addition, `duti` will be installed to select **[MPV](http://mpv.io)** the default application for the most common video types.
+
+```bash
+cd mpv
+./install.sh
+```
+
+### - configuation files and lua scripts in `~/.config/mpv`:
+
+* `mpv.conf` - The config file is read per-user. Most options from man page can be put into the configuration file by dropping the preceding `--`. See full documentation [here](http://mpv.io/manual/stable/).
+* `input.conf` - User-defined key bindings for mpv.
+* `lua-settings/osc.conf` - The config file can do limited configuation to the OSC. For instance, changing the layout for the OSC, avaiable values are: box, slimbox, bottombar and topbar.
+* `scripts/autoload.lua` - Automatically load playlist entries before and after the currently playing file, by scanning the directory.
+* `scripts/vo_battery.lua` - Choose the VO based on if the laptop is on battery or not. For instance, when on ac power, the `vo` is set to `opengl-hq:interpolation:icc-profile-auto:icc-cache=~/.config/mpv/tmp/icc-cache:blend-subtitles=yes`; when on battery, the `vo` is set to `opengl:icc-profile-auto`.
+
+Reminder: `opengl-hq` should be only used when your laptop has *Intel HD 4000 graphics* or above. Otherwise, stick to `opengl` for the `vo`. When equipped with a dedicated video card, you could try adding `interpolation` to the `vo` to reduce stuttering caused by mismatches in the video fps and display refresh rate.
+
+## Feedback
+
+Suggestions/improvements
+[welcome](https://github.com/mrcotter/mrcotter_dotfiles/issues)!
+
+## Thanks to…
+
+* [Mathias Bynens](https://mathiasbynens.be/) and his [dotfiles](https://github.com/mathiasbynens/dotfiles)
+* [Shrey Banga](https://github.com/milkbikis) and his [powerline-shell](https://github.com/milkbikis/powerline-shell)
+* [Chenwen Song](https://songchenwen.github.io) and his [dotfiles](https://github.com/songchenwen/dotfiles)
 
