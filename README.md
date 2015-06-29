@@ -14,13 +14,13 @@ Well, let's get started and see how to use my `dotfiles`.
 * Install **[Xcode](https://itunes.apple.com/au/app/xcode/id497799835?mt=12)**.
 * Install **Command Line Tools** for **[Xcode](https://itunes.apple.com/au/app/xcode/id497799835?mt=12)** in Terminal: `xcode-select --install`.
 * Install the latest version of **[XQuartz](https://xquartz.macosforge.org)** for your OS. Many projects may require the up-to-date libraries.
-* For Java development, Java SE Development Kit is required. You can install both **[Apple's Java 6](https://support.apple.com/downloads/DL1572/en_US/JavaForOSX2014-001.dmg)** and **[Oracle's Java 8](http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-macosx-x64.dmg)**.
+* For Java development, Java SE Development Kit is required. You can install both **[Apple's Java 6](https://support.apple.com/kb/DL1572)** and **[Oracle's Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**.
 
 Reminder: Java 6 is now **_deprecated and not supported_**, and the current OS X El Capitan Developer Beta 2 has issues installing Java 6 and running application that requires the legacy Java version.
 
 ## Download dotfiles
 
-### Using Git
+### - Using Git
 
 You can clone my repository wherever you want (e.g. `~/Documents/dotfiles`). **_Don't_** execute the bootstrap script right now because several settings in my `dotfiles` required some other dependencies. We are gonna install them via **[Homebrew](http://brew.sh/)** in the next step.
 
@@ -46,6 +46,16 @@ cd homebrew
 
 In the recipes script, you can simply comment out or delete those fomulae that you don't want to install. But beware, there are also configurations in `dotfiles` that relate to some of them. Make sure you understand the files and edit the fomulae properly. For instance, GNU core utilities, bash, ant, maven, jenv.
 
+### - Update Bash Shell
+
+From the recipes, Homebrew installed Bash 4 to `usr/local/bin/`. Using the following three commands, we’ll initiate a shell as the root user, append our desired shell’s path to a file of whitelisted system shells, and then change the system shell globally.
+
+```bash
+sudo -s
+echo /usr/local/bin/bash >> /etc/shells
+chsh -s /usr/local/bin/bash
+```
+
 ## Install Dotfiles
 
 To install, `cd` into your local `dotfiles` repository and then:
@@ -56,7 +66,7 @@ source bootstrap.sh
 
 To update form my repository, simply run the command above again. The bootstrapper script will pull in the latest version and copy the files to your local folder.
 
-### About `$PATH`
+### - About `$PATH`
 
 If there is a need to extend or modify `$PATH`, locate to `~/.path`. This is the one which is sourced along with the other files. Like this:
 
@@ -64,11 +74,11 @@ If there is a need to extend or modify `$PATH`, locate to `~/.path`. This is the
 sudo nano ~/.path
 ```
 
-### Solarized Theme for iTerm2 / Terminal
+### - Solarized Theme for iTerm2 / Terminal
 
 I use a custom bash prompt based on the **[Solarized color palette](http://ethanschoonover.com/solarized)**. It's quite common to install **[iTerm2](https://www.iterm2.com/)** (a cool Terminal replacement) and import `Solarized Dark.itermcolors` (The files are in the folder `solarized_theme`, `Solarized Dark xterm-256color.terminal` is for build-in Terminal).
 
-### Powerline-shell for Bash
+### - Powerline-shell for Bash
 
 **[Powerline-shell](https://github.com/milkbikis/powerline-shell)** is a python daemon that supplies a consistent, nicely formated status line information that can be used in any terminal shell such as Bash, ZSH and Fish. To install, `cd` into `powerline-shell` directory and then:
 
