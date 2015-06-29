@@ -48,7 +48,7 @@ In the recipes script, you can simply comment out or delete those fomulae that y
 
 #### - Update Bash Shell
 
-From the recipes, **[Homebrew](http://brew.sh/)** installed Bash 4 to `usr/local/bin/`. Using the following commands, we’ll initiate a shell as the root user, append new shell path to a file of whitelisted system shells, and then change the system shell globally.
+From the recipes, **[Homebrew](http://brew.sh/)** installed Bash 4 to `/usr/local/opt/bash/bin`. Using the following commands, we’ll initiate a shell as the root user, append new shell path to a file of whitelisted system shells, and then change the system shell globally.
 
 ```bash
 sudo echo /usr/local/opt/bash/bin/bash >> /etc/shells
