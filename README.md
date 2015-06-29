@@ -1,5 +1,5 @@
 # mrcotter_dotfiles
-Configuration dot files for OS X, Homebrew, MPV, etc. For **Developers**.
+Configuration dot files for OS X, Homebrew, MPV, etc. For :baby_bottle:**Developers**.
 
 ![Screenshot of Terminal](http://i.imgur.com/UZhJURm.png)
 
@@ -48,7 +48,7 @@ In the recipes script, you can simply comment out or delete those fomulae that y
 
 ### - Update Bash Shell
 
-From the recipes, Homebrew installed Bash 4 to `usr/local/bin/`. Using the following three commands, we’ll initiate a shell as the root user, append our desired shell’s path to a file of whitelisted system shells, and then change the system shell globally.
+From the recipes, **[Homebrew](http://brew.sh/)** installed Bash 4 to `usr/local/bin/`. Using the following three commands, we’ll initiate a shell as the root user, append our desired shell’s path to a file of whitelisted system shells, and then change the system shell globally.
 
 ```bash
 sudo -s
@@ -98,4 +98,13 @@ cd osx_defaults
 ./.osx
 ```
 
+## Install MPV
+
+![MPV Screenshot](http://i.imgur.com/2h7un5l.jpg)
+
+**[MPV](http://mpv.io)** is a fork of mplayer2 and MPlayer. It shares some features with the former projects while introducing many more. I find **[MPV](http://mpv.io)** the best video player on Mac for its high quality video output and better support on different formats of subtitles compare to **[Movist](https://itunes.apple.com/au/app/movist/id461788075?mt=12)**.
+
+**[MPV](http://mpv.io)** is essentionally a CLI media player for its current progress. It lacks of full GUI mode to control or adjust settings other than the OSC (On Screen Controller). All other settings must be configured via command lines, or user can put user-specifuc configuration files and lua scripts in `~/.config/mpv`. See full documentation [here](http://mpv.io/manual/stable/).
+
+The script in `mpv` will install 
 
