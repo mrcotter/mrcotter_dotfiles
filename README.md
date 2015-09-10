@@ -16,7 +16,7 @@ Well, let's get started and see how to use my `dotfiles`.
 * Install the latest version of **[XQuartz](https://xquartz.macosforge.org)** for your OS. Many projects may require the up-to-date libraries.
 * For Java development, Java SE Development Kit is required. You can install both **[Apple's Java 6](https://support.apple.com/kb/DL1572)** and **[Oracle's Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**.
 
-Reminder: Java 6 is now **_deprecated and not supported_**, and the current OS X El Capitan Developer Beta 2 has issues installing Java 6 and running application that requires the legacy Java version.
+Reminder: Java 6 is now **_deprecated and not supported_**, and the current OS X El Capitan GM has issues installing Java 6 and running application that requires the legacy Java version.
 
 ## Download dotfiles
 
