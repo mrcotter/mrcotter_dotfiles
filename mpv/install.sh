@@ -12,7 +12,7 @@ MPVDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 if test ! $(which mpv); then
 	echo "Installing mpv via Homebrew"
 	brew tap mpv-player/mpv
-	brew install mpv --with-official-libass
+	brew install mpv
 	brew linkapps mpv
 fi
 
@@ -25,8 +25,6 @@ mkdir -p ~/.config
 # Create and sync all necessary directories and files
 mkdir -p ~/.config/mpv
 mkdir -p ~/.config/mpv/watch_later
-mkdir -p ~/.config/mpv/tmp
-touch ~/.config/mpv/tmp/icc-cache
 rsync --exclude ".DS_Store" --exclude "install.sh" -ravh $MPVDIR ~/.config;
 
 # Set default application using mpv for video play
