@@ -67,7 +67,7 @@ function find_and_add_entries()
             return false
         end
         if EXTENSIONS[string.lower(ext)] then
-            if string.find(v, prefix) then return true end
+            if string.find(v, prefix, 1, true) then return true end
         end
         return false
     end)
