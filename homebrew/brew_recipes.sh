@@ -46,7 +46,7 @@ brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
-brew install homebrew/php/php56 --with-gmp
+brew install homebrew/php/php70 --with-gmp
 
 # Install font tools.
 brew tap bramstein/webfonttools
@@ -103,7 +103,7 @@ brew install zopfli
 brew tap homebrew/science
 brew install ant
 brew install cmake
-brew install ffmpeg
+brew install ffmpeg --with-faac --with-fdk-aac --with-ffplay --with-freetype --with-libass --with-libbluray --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
 brew install gcc
 brew install glew
 brew install glfw3
