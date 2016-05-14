@@ -1,2 +1,2 @@
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:$HOME/.jenv/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:$PYENV_ROOT/bin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"

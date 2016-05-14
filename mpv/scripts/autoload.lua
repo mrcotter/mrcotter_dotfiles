@@ -1,13 +1,11 @@
 -- This script automatically loads playlist entries before and after the
 -- the currently played file. It does so by scanning the directory a file is
 -- located in when starting playback. It sorts the directory entries
--- alphabetically, and adds entries with the similar prefix before and after the current file to
+-- alphabetically, and adds entries before and after the current file to
 -- the internal playlist. (It stops if the it would add an already existing
 -- playlist entry at the same position - this makes it "stable".)
--- Add at most 5 * 2 files when starting a file (before + after).
-
-MAXENTRIES = 5
-PREFIX_LENGTH = 4
+-- Add at most 50 * 2 files when starting a file (before + after).
+MAXENTRIES = 50
 
 function Set (t)
     local set = {}
@@ -32,7 +30,12 @@ function add_files_at(index, files)
 end
 
 function get_extension(path)
-    return string.match(path, "%.([^%.]+)$" )
+    match = string.match(path, "%.([^%.]+)$" )
+    if match == nil then
+        return "nomatch"
+    else
+        return match
+    end
 end
 
 table.filter = function(t, iter)
@@ -49,29 +52,31 @@ function find_and_add_entries()
     if #dir == 0 then
         return
     end
+    local pl_count = mp.get_property_number("playlist-count", 1)
+    if (pl_count > 1 and autoload == nil) or
+       (pl_count == 1 and EXTENSIONS[string.lower(get_extension(filename))] == nil) then
+        return
+    else
+        autoload = true
+    end
 
     local files = mputils.readdir(dir, "files")
     if files == nil then
         return
     end
-
-    local prefixLength = PREFIX_LENGTH
-    if string.len(filename) < PREFIX_LENGTH then
-        prefixLength = string.len(filename)
-    end
-    local prefix = string.sub(filename, 1, prefixLength)
-    
     table.filter(files, function (v, k)
         local ext = get_extension(v)
         if ext == nil then
             return false
         end
-        if EXTENSIONS[string.lower(ext)] then
-            if string.find(v, prefix, 1, true) then return true end
-        end
-        return false
+        return EXTENSIONS[string.lower(ext)]
     end)
     table.sort(files, function (a, b)
+        local len = string.len(a) - string.len(b)
+        if len ~= 0 then -- case for ordering filename ending with such as X.Y.Z
+            local ext = string.len(get_extension(a)) + 1
+            return string.sub(a, 1, -ext) < string.sub(b, 1, -ext)
+        end
         return string.lower(a) < string.lower(b)
     end)
 

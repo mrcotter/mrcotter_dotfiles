@@ -110,8 +110,9 @@ brew install glfw3
 brew install jenv
 brew install markdown
 brew install maven
-brew install open-mpi
 brew install python3
+brew install pyenv
+brew install rbenv ruby-build
 brew install sdl2
 
 # Remove outdated versions from the cellar.
