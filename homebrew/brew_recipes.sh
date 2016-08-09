@@ -48,10 +48,6 @@ brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
 brew install homebrew/php/php70 --with-gmp
 
-# Install font tools.
-brew tap bramstein/webfonttools
-brew install woff2
-
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 brew install aircrack-ng
 brew install bfg
