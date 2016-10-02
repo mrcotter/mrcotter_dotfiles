@@ -11,7 +11,7 @@ MPVDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # Install mpv via Homebrew
 if test ! $(which mpv); then
 	echo "Installing mpv via Homebrew"
-	brew install mpv --with-bundle
+	brew install mpv --with-bundle --with-libbluray --with-libdvdnav --with-libdvdread --with-uchardet --with-libaacs
 	brew linkapps mpv
 fi
 
