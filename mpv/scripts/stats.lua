@@ -235,7 +235,9 @@ local function append_perfdata(s)
     end
 
     local ds = mp.get_property_bool("display-sync-active", false)
-    local target_fps = ds and mp.get_property_number("display-fps", 0) or mp.get_property_number("fps", 0)
+    local target_fps = ds and mp.get_property_number("display-fps", 0)
+                       or mp.get_property_number("container-fps", 0)
+                       or mp.get_property_number("fps", 0)
     if target_fps > 0 then target_fps = 1 / target_fps * 1e6 end
 
     local last_s = vo_p["render-last"] + vo_p["present-last"] + vo_p["upload-last"]
@@ -304,7 +306,7 @@ local function append_perfdata(s)
 end
 
 
-function append_display_sync(s)
+local function append_display_sync(s)
     if not mp.get_property_bool("display-sync-active", false) then
         return
     end
@@ -318,28 +320,23 @@ function append_display_sync(s)
                         {prefix="DS:" .. o.prefix_sep .. " - / ", prefix_sep=""})
     end
 
-    -- Since no graph is needed we can print ratio/jitter on the same line and save some space
-    if not (o.plot_vsync_ratio or o.plot_vsync_jitter) then
-        local vratio = append_property(s, "vsync-ratio", {prefix="VSync Ratio:"})
-        append_property(s, "vsync-jitter", {prefix="VSync Jitter:", nl=vratio and "" or o.nl})
-        return
-    end
-
-    -- As we potentially need to plot some graphs we print jitter and ratio on
-    -- their own lines so we have the same layout when toggled (= drawing graphs)
-    local ratio_graph = ""
-    local jitter_graph = ""
-    if o.ass_formatting and timer:is_enabled() then
+    -- As we need to plot some graphs we print jitter and ratio on their own lines
+    if timer:is_enabled() and (o.plot_vsync_ratio or o.plot_vsync_jitter) and o.ass_formatting then
+        local ratio_graph = ""
+        local jitter_graph = ""
         if o.plot_vsync_ratio then
             ratio_graph = generate_graph(vsratio_buf, vsratio_buf.pos, vsratio_buf.len, vsratio_buf.max, 0.8)
         end
         if o.plot_vsync_jitter then
             jitter_graph = generate_graph(vsjitter_buf, vsjitter_buf.pos, vsjitter_buf.len, vsjitter_buf.max, 0.8)
         end
+        append_property(s, "vsync-ratio", {prefix="VSync Ratio:", suffix=o.prefix_sep .. ratio_graph})
+        append_property(s, "vsync-jitter", {prefix="VSync Jitter:", suffix=o.prefix_sep .. jitter_graph})
+    else
+        -- Since no graph is needed we can print ratio/jitter on the same line and save some space
+        local vratio = append_property(s, "vsync-ratio", {prefix="VSync Ratio:"})
+        append_property(s, "vsync-jitter", {prefix="VSync Jitter:", nl="" or o.nl})
     end
-
-    append_property(s, "vsync-ratio", {prefix="VSync Ratio:", suffix=o.prefix_sep .. ratio_graph})
-    append_property(s, "vsync-jitter", {prefix="VSync Jitter:", suffix=o.prefix_sep .. jitter_graph})
 end
 
 
@@ -377,7 +374,12 @@ local function add_video(s)
                         {no=true, [""]=true})
     end
     append_property(s, "avsync", {prefix="A-V:"})
-    if append_property(s, "drop-frame-count", {prefix="Dropped:"}) then
+    if append_property(s, "decoder-frame-drop-count", {prefix="Dropped:"}) then
+        append_property(s, "frame-drop-count", {prefix="VO:", nl=""})
+        append_property(s, "mistimed-frame-count", {prefix="Mistimed:", nl=""})
+        append_property(s, "vo-delayed-frame-count", {prefix="Delayed:", nl=""})
+    -- Deprecated FPS properties for backwards compatibility
+    elseif append_property(s, "drop-frame-count", {prefix="Dropped:"}) then
         append_property(s, "vo-drop-frame-count", {prefix="VO:", nl=""})
         append_property(s, "mistimed-frame-count", {prefix="Mistimed:", nl=""})
         append_property(s, "vo-delayed-frame-count", {prefix="Delayed:", nl=""})
@@ -424,6 +426,7 @@ local function add_video(s)
 
     append_property(s, "video-params/gamma", {prefix="Gamma:", suffix=hdrinfo})
     append_property(s, "packet-video-bitrate", {prefix="Bitrate:", suffix=" kbps"})
+    append_property(s, "vf", {prefix="Video Filters:"}, {["(empty)"]=true})
 end
 
 
@@ -436,6 +439,7 @@ local function add_audio(s)
     append_property(s, "audio-params/samplerate", {prefix="Sample Rate:", suffix=" Hz"})
     append_property(s, "audio-params/channel-count", {prefix="Channels:"})
     append_property(s, "packet-audio-bitrate", {prefix="Bitrate:", suffix=" kbps"})
+    append_property(s, "af", {prefix="Audio Filters:"}, {["(empty)"]=true})
 end
 
 
