@@ -97,6 +97,7 @@ brew install zopfli
 brew tap homebrew/science
 brew install ant
 brew install cmake
+brew install x265
 brew install ffmpeg --with-fdk-aac --with-sdl2 --with-freetype --with-libass --with-libbluray --with-libvorbis --with-libvpx --with-opus --with-webp --with-x265
 brew install gcc
 brew install glew
