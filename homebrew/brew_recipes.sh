@@ -46,7 +46,7 @@ brew install vim --with-override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
-brew install homebrew/php/php71 --with-gmp
+brew install php@7.1
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 # brew install aircrack-ng
@@ -100,13 +100,10 @@ brew install cmake
 brew install x265
 brew install ffmpeg --with-fdk-aac --with-sdl2 --with-freetype --with-libass --with-libbluray --with-libvorbis --with-libvpx --with-opus --with-webp --with-x265
 brew install gcc
-brew install glew
-brew install glfw3
+brew install pyenv
 brew install jenv
 brew install markdown
 brew install maven
-brew install python3
-brew install pyenv
 brew install rbenv ruby-build
 brew install sdl2
 
